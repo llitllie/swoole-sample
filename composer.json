@@ -1,11 +1,9 @@
 {
-    "name": "sim/ticket",
+    "name": "llitllie/swoole-sample",
     "type": "library",
-    "description": "Swoole Ticket Generator",
+    "description": "Swoole Sample",
     "keywords": [
-        "Swoole",
-        "BunTicketdle",
-        "Generator"
+        "Swoole"
     ],
     "license": "MIT",
     "homepage": "https://github.com/llitllie/swoole-sample.git",
