@@ -1,18 +1,15 @@
-ARG PHP_TAG="7.2-cli-alpine3.9"
+ARG PHP_TAG="7.2-cli"
 
 FROM php:$PHP_TAG
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
-RUN set -ex \
-  	&& apk update \
-    && apk add --no-cache --virtual .build-deps curl gcc g++ make build-base autoconf \
-    && apk add libstdc++ openssl-dev libffi-dev \
+RUN apt-get update && apt-get install -y libssl-dev libffi-dev \
     && docker-php-ext-install sockets \
     && docker-php-source extract \
     && printf "yes\nyes\nno\nyesnno\n" | pecl install swoole \
     && docker-php-ext-enable swoole \
     && docker-php-source delete \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && apk del .build-deps \
+    && apt autoremove && apt clean \
     && rm -rf /tmp/* 
