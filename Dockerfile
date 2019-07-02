@@ -10,7 +10,7 @@ RUN set -ex \
     && apk add libstdc++ openssl-dev libffi-dev \
     && docker-php-ext-install sockets \
     && docker-php-source extract \
-    && printf "yes\nyes\nno\nyesnno\n" | pecl install swoole \
+    && printf "yes\nyes\nno\nyes\nno\n" | pecl install swoole \
     && docker-php-ext-enable swoole \
     && docker-php-source delete \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
